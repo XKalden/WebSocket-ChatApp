@@ -28,16 +28,15 @@ io.on('connection', (socket) => {
 
 
 
-    socket.on('createMessage', (message) => {
+    socket.on('createMessage', (message, callback) => {
         console.log('createMessage', message);
+    
 
         // emmit function all 
-        socket.broadcast.emit('newMessage', generateMessage( message.from, message.text));
+        io.emit('newMessage', generateMessage( message.from, message.text));
+        callback('this is from sever');
 
     });
-
-
-
 
     // disconnection function 
     socket.on('disconnect', () => {
@@ -45,6 +44,8 @@ io.on('connection', (socket) => {
     });
 
 });
+
+
 
 
 
