@@ -33,7 +33,7 @@ io.on('connection', (socket) => {
     
         // emmit function all 
         io.emit('newMessage', generateMessage( message.from, message.text));
-        callback('this is from sever');
+        callback();
 
     });
 
